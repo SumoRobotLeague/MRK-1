@@ -7,7 +7,7 @@
 *
 * This sketch is designed to work with the SumoRobotLeague MRK-1
 * sumo robot kit. For more information about the kit, please
-* visit http://sumorobotleague.com/kits/mrk-1
+* visit http://www.sumorobotleague.com/purchasekits/individual-kits
 */
 
 // TODO(erh): Remove this library.
