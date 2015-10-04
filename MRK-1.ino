@@ -32,6 +32,7 @@
 #define SEARCH_SPEED 255
 #define QTR_Threshold 500
 #define ATTACK_DISTANCE 25
+#define BACKUP_DISTANCE 4000
 
 // State variables
 bool isBackup = false;
@@ -63,8 +64,8 @@ void loop() {
   if ( isBackup ) {
     backupTimer = backupTimer + 1;
     setSpeed(-MAX_SPEED, 0);
-    setSpeed(-MAX_SPEED, 1);
-    if (backupTimer >= 5000 ) {
+    setSpeed(-MAX_SPEED + 20, 1);
+    if (backupTimer >= BACKUP_DISTANCE ) {
       isBackup = false;
       backupTimer = 0;
     }
@@ -81,9 +82,10 @@ void loop() {
         setSpeed(MAX_SPEED, 0);
         setSpeed(MAX_SPEED, 1);
       } else { // search
+        // TODO(erh): implement other searching algorithms
         Serial.println("Search");
-        setSpeed(SEARCH_SPEED, 0);
-        setSpeed(-SEARCH_SPEED, 1);
+        setSpeed(-SEARCH_SPEED, 0);
+        setSpeed(SEARCH_SPEED, 1);
       }
     }
   }
