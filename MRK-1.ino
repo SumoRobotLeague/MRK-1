@@ -25,7 +25,7 @@
 #define LED 13
 #define leftSensor A1
 #define rightSensor A2
-#dfeine IRdriver 6
+#define IRdriver 6
 
 // Robot Configuration Parameters
 // Speed range is -255 -> 255
