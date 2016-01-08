@@ -14,17 +14,18 @@
 #include <Pushbutton.h>
 
 // PIN Configurations
-#define echoPin 2
+#define echoPin A0
 #define triggerPin 3
 #define rightBackMotor 4
-#define rightMotorSpeed 5
-#define leftMotorSpeed 6
+#define rightMotorSpeed 10
+#define leftMotorSpeed 9
 #define leftForwardMotor 7  //if a motor goes backward swap the number on the FwdPin and BckPin
 #define rightForwardMotor 8   //if a motor goes backward swap the number on the FwdPin and BckPin
 #define leftBackMotor 11
 #define LED 13
-#define leftSensor A7
-#define rightSensor A0
+#define leftSensor A1
+#define rightSensor A2
+#dfeine IRdriver 6
 
 // Robot Configuration Parameters
 // Speed range is -255 -> 255
@@ -52,6 +53,8 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(IRdriver, HIGH);
+  
   if (button.isPressed()) {
     // if button is pressed, stop and wait for another press to go again
     button.waitForRelease();
@@ -108,6 +111,7 @@ void pinSetup() {
   // qtr light sensor
   pinMode(leftSensor, INPUT);
   pinMode(rightSensor, INPUT);
+  pinMode(IRdriver, OUTPUT);
 }
 
 void setSpeed(int speed, int motor = 0) {
