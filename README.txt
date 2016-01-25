@@ -1,4 +1,4 @@
-# MRK-1 Sumo Robot Code
+## MRK-1 Sumo Robot Code ##
 
 This repository contains example code, exercise solutions,
 and fully functional robot programs for the MRK-1 Sumo Robot
