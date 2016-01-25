@@ -27,6 +27,11 @@ void setup() {
 	// Question 5 Solution
 	Serial.print("Question 5: The IR Sensor in irSensors[] at index 0 is: ");
 	Serial.println(irSensors[0]);
+	
+	// Question 6 Solution
+	Serial.print("Question 6: The final value of e is: ");
+	Serial.println(e);
+}
 }
 
 void loop() {
