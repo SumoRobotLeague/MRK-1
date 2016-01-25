@@ -1,5 +1,7 @@
 
 void setup() {
+	Serial.begin(9600);
+
 	int a = 5;
 	int b = a + 12;
 	a = 10;
@@ -31,7 +33,6 @@ void setup() {
 	// Question 6 Solution
 	Serial.print("Question 6: The final value of e is: ");
 	Serial.println(e);
-}
 }
 
 void loop() {
