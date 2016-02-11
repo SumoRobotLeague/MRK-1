@@ -6,12 +6,20 @@
   Lesson 3.2, Exercise 2
 ********************************************************************/
 
-void setup() {
-	Serial.begin(9600);
-	
-	char 
-}
+/********************************************************************
+Pseudo-code example solution for Exercise 2.
 
-void loop() {
-}
+	DEFINE distanceLimit TO 10 CENTIMETERS
 
+	SETUP FUNCTION:
+		CONFIGURE ULTRASONIC SENSOR PINS FOR INPUT
+		CONFIGURE LED PINS FOR OUTPUT
+
+	LOOP FUNCTION:
+		GET distance FROM ULTRASONIC DISTANCE SENSOR
+
+		IF distance IS LESS THAN distanceLimit:
+			TURN ON LED
+		ELSE:
+			TURN OFF LED
+********************************************************************/
