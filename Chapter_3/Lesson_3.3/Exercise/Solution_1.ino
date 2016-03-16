@@ -6,6 +6,7 @@
   Lesson 3.3, Exercise 1
 ********************************************************************/
 
+<<<<<<< HEAD:Chapter_3/Lesson_3.3/Exercise/Solution_1.ino
 int state = 0; // 1 = attack, 2 = abort, default = searching
 
 void setup() {
@@ -25,3 +26,22 @@ void loop() {
 			break;
 	}
 }
+=======
+/********************************************************************
+Pseudo-code example solution for Exercise 2.
+
+	DEFINE distanceLimit TO 10 CENTIMETERS
+
+	SETUP FUNCTION:
+		CONFIGURE ULTRASONIC SENSOR PINS FOR INPUT
+		CONFIGURE LED PINS FOR OUTPUT
+
+	LOOP FUNCTION:
+		GET distance FROM ULTRASONIC DISTANCE SENSOR
+
+		IF distance IS LESS THAN distanceLimit:
+			TURN ON LED
+		ELSE:
+			TURN OFF LED
+********************************************************************/
+>>>>>>> master:Chapter_3/Lesson_3.2/Exercises/Solution_2.ino
