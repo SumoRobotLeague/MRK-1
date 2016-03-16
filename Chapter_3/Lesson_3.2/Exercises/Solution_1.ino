@@ -8,17 +8,16 @@
 
 void setup() {
 	Serial.begin(9600);
-	
+
 	int height = 72;
 
 	// 42 inches is 3.5 feet.
-	if ( height > 42 ) { 
+	if ( height > 42 ) {
 		Serial.println("Climb aboard!");
 	} else {
-		Serial.println("Too short! Access denied!");	
+		Serial.println("Too short! Access denied!");
 	}
 }
 
 void loop() {
 }
-
