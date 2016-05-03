@@ -3,7 +3,7 @@
   Author - Eric Ryan Harrison <me@ericharrison.info>
   http://github.com/SumoRobotLeague/MRK-1/
 
-  Lesson 4.2, Push Button
+  Lesson 4.2, Exercise 3 Solution - Push Button
 ********************************************************************/
 
 #define buttonPin 2
