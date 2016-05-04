@@ -3,7 +3,10 @@
   Author - Eric Ryan Harrison <me@ericharrison.info>
   http://github.com/SumoRobotLeague/MRK-1/
 
-  Lesson 7, Bot: Fun Demo Robot
+  Lesson 7, Exercise 2, Bot: Fun Demo Robot
+  - search_and_avoid()
+  - search_and_destroy()
+  - search_and_avoid_musically()
 ********************************************************************/
 
 #include "Motor.h"
@@ -17,6 +20,11 @@
 #define echoPin A0
 #define pingPin 3
 
+// Define pins to control infrared line sensors
+#define leftSensor  A1
+#define rightSensor A2
+#define IREmitter   6
+
 // Motor pins
 #define rightMotorSpeed     10
 #define rightMotorDirection 8
@@ -24,13 +32,17 @@
 #define leftMotorDirection  4
 
 // Initialize state variables
-const int states = 1;
+const int states = 3;
 int state = 1;
 bool buttonPressed = false;
 
 // Global operational variables
 long cm = 0;
 const int turnDuration = 600;
+
+// search_and_destroy() attack configuration
+const int stopDistance   = 1; // Distance in centimeters
+const int attackDistance = 15;
 
 // Create our motor object
 Motor motor;
@@ -41,6 +53,11 @@ void setup() {
 	pinMode(button, INPUT_PULLUP);
 	pinMode(echoPin, INPUT);
 	pinMode(pingPin, OUTPUT);
+
+	// Configure our IR sensors
+	pinMode(leftSensor,  INPUT);
+	pinMode(rightSensor, INPUT);
+	pinMode(IREmitter,   OUTPUT);
 
 	// Configure our motors
 	motor.setupRight(rightMotorSpeed, rightMotorDirection);
@@ -63,7 +80,7 @@ void loop() {
 
 		if ( state == states ) {
 			// we've reached our maximum state, reset to 1
-			state = 0;
+			state = 1;
 		} else {
 			state = state + 1;
 		}
@@ -73,11 +90,13 @@ void loop() {
 	}
 
 	switch(state) {
-		case 0:
-			// do nothing
-			break;
 		case 1:
 			search_and_avoid();
+			break;
+		case 2:
+			search_and_destroy();
+			break;
+		case 3: search_and_avoid_musically();
 			break;
 	}
 }
@@ -108,6 +127,45 @@ void search_and_avoid() {
 		// if distance is greater than 10, just drive forward
 		motor.left(255);
 		motor.right(255);
+	}
+}
+
+// Randomly drive towards the nearest object. Stop when
+// the distance to the object is 1cm or less. If the object moves,
+// resume searching
+void search_and_destroy() {
+	// get a random direction, 1 = left, 2 = right
+	int turnDirection = 1;
+
+	// get distance in centimeters
+	cm = msToCm( ping() );
+
+	// if distance is less than 10, pick a new random direction
+	if ( cm < attackDistance ) {
+		// We have found an object, attack!
+		motor.attack();
+
+		// we are within 1 cm of our object, stop attacking
+		// and blink at the target angrily. :)
+		if ( cm <= stopDistance ) {
+			motor.left(0);
+			motor.right(0);
+
+			blink(1);
+		}
+
+	} else {
+		// We haven't found anything close to us, spin in place
+		// until we find something.
+		turnDirection = random(1, 3);
+
+		if ( turnDirection == 1 ) {
+			motor.left(255);
+			motor.right(-255);
+		} else {
+			motor.left(-255);
+			motor.right(255);
+		}
 	}
 }
 
