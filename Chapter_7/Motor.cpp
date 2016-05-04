@@ -87,7 +87,7 @@ void Motor::attack() {
 
 // Our abort() method is a very simple function that will
 // tell both motors to reverse at full speed.
-void Motor::attack() {
+void Motor::abort() {
 	right(minSpeed);
 	left(minSpeed);
 }
