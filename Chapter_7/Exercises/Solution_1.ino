@@ -3,7 +3,9 @@
   Author - Eric Ryan Harrison <me@ericharrison.info>
   http://github.com/SumoRobotLeague/MRK-1/
 
-  Lesson 7, Bot: Fun Demo Robot
+  Lesson 7, Exercise 1, Bot: Fun Demo Robot
+  - search_and_avoid()
+  - search_and_destroy()
 ********************************************************************/
 
 #include "Motor.h"
@@ -24,7 +26,7 @@
 #define leftMotorDirection  4
 
 // Initialize state variables
-const int states = 3;
+const int states = 2;
 int state = 1;
 bool buttonPressed = false;
 
@@ -66,8 +68,9 @@ void loop() {
 		buttonPressed = false;
 
 		if ( state == states ) {
-			// we've reached our maximum state, reset to 1
-			state = 1;
+			// we've reached our maximum state, reset to 0
+			// and pause until we press the button again
+			state = 0;
 		} else {
 			state = state + 1;
 		}
@@ -77,6 +80,9 @@ void loop() {
 	}
 
 	switch(state) {
+		case 0:
+			// Do nothing until the button is pressed again
+			break;
 		case 1:
 			search_and_avoid();
 			break;
