@@ -101,6 +101,7 @@ void loop() {
 			Serial.println("Good luck!");
 			begin_countdown();
 		} else {
+			state = 1;
 			Serial.println("Robot entering idle mode.");
 		}
 	}
