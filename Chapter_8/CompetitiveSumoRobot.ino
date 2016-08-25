@@ -150,12 +150,12 @@ void search() {
 
 	// get random direction and store the start time
 	if ( turnTime == 0 ) {
-		direction = random(1, 3);
+		turnDirection = random(1, 3);
 		turnTime  = millis();
 	}
 
 	// start our turn, 1 = left, 2 = right
-	if ( direction == 1 ) {
+	if ( turnDirection == 1 ) {
 		motor.left(255);
 		motor.right(-255);
 	} else {
