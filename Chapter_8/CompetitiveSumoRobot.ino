@@ -125,8 +125,8 @@ void compete() {
 	// read our sensor values to determine what we
 	// need our robot to do.
 	int distance = msToCm( ping() );
-	int leftIR   = digitalRead(leftSensor);
-	int rightIR  = digitalRead(rightSensor);
+	int leftIR   = analogRead(leftSensor);
+	int rightIR  = analogRead(rightSensor);
 
 	if ( leftIR < abortThreshold || rightIR < abortThreshold ) {
 		// if we have detected a ring border, abort!
