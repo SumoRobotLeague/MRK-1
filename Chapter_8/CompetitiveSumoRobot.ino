@@ -102,6 +102,8 @@ void loop() {
 			begin_countdown();
 		} else {
 			state = 1;
+			motor.left(0);
+			motor.right(0);
 			Serial.println("Robot entering idle mode.");
 		}
 	}
