@@ -71,10 +71,10 @@ void Motor::left(int speed) {
 
 	if ( speed < 0 ) {
 		digitalWrite(_leftMotorDirectionPin, LOW);
-		analogWrite(_leftMotorSpeedPin, speed);
+		analogWrite(_leftMotorSpeedPin, abs(speed));
 	} else {
 		digitalWrite(_leftMotorDirectionPin, HIGH);
-		analogWrite(_leftMotorSpeedPin, abs(speed));
+		analogWrite(_leftMotorSpeedPin, speed);
 	}
 }
 
