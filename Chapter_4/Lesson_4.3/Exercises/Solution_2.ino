@@ -44,7 +44,7 @@ void loop() {
 // motor 0 is our right motor, motor 1 is our left motor.
 void setSpeed(int motor, int speed) {
 	if ( motor == 0 ) {
-		if ( motorspeed < 0 ) {
+		if ( speed < 0 ) {
 			digitalWrite(rightMotorDirection, LOW);
 			analogWrite(rightMotorSpeed, abs(speed));
 		} else {
@@ -52,7 +52,7 @@ void setSpeed(int motor, int speed) {
 			analogWrite(rightMotorSpeed, speed);
 		}
 	} else {
-		if ( motorspeed < 0 ) {
+		if ( speed < 0 ) {
 			digitalWrite(leftMotorDirection, HIGH);
 			analogWrite(leftMotorSpeed, abs(speed));
 		} else {
